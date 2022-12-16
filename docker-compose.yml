@@ -1,0 +1,44 @@
+version: '2.4'
+
+services:
+  data_database:
+    image: cogniteev/echo
+    container_name: knowledge_data_database
+    command: echo 'Data Container for MySql'
+    volumes:
+      - /var/lib/mysql
+
+  mysql:
+    image: mysql:5.7.27
+    container_name: knowledge_mysql
+    volumes_from:
+      - data_database
+    ports:
+      - "3306:3306"
+    command: mysqld --sql_mode="" --innodb_buffer_pool_size=4GB --innodb_log_file_size=1G --skip-log-bin --innodb_flush_log_at_trx_commit=0 --innodb_io_capacity=700 --innodb_io_capacity_max=1500 --max_allowed_packet=1G --innodb_doublewrite=0
+    environment:
+      MYSQL_ROOT_PASSWORD: knowledge
+      MYSQL_DATABASE: knowledge
+    mem_limit: 750m
+    mem_reservation: 500m
+    cpus: 0.2
+
+  knowledge_app:
+    container_name: knowledge_app
+    build: .
+    stdin_open: true
+    tty: true
+    command: bash -c "bundle install && bundle exec -- bin/rails server -p 3000 -b '0.0.0.0'"
+    environment:
+      RAILS_ENV: development
+    volumes:
+      - .:/www/knowledge
+    ports:
+      - "3000:3000"
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    mem_limit: 1024m
+    mem_reservation: 750m
+    cpus: 1
