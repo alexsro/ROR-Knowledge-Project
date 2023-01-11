@@ -18,7 +18,11 @@ module Knowledge
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "UTC"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.autoload_paths += [
+      config.root.join('app', 'services').to_s,
+      config.root.join('app', 'services', 'users').to_s
+    ]
   end
 end
