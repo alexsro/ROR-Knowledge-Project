@@ -24,21 +24,40 @@ services:
     cpus: 0.2
 
   knowledge_app:
+    user: "1000:1000"
     container_name: knowledge_app
     build: .
     stdin_open: true
     tty: true
-    command: bash -c "bundle install && bundle exec -- bin/rails server -p 3000 -b '0.0.0.0'"
+    command: bash -c "yarn && bundle install && bundle exec -- bin/rails server -p 3000 -b '0.0.0.0'"
     environment:
       RAILS_ENV: development
+      VITE_RUBY_HOST: vite
     volumes:
       - .:/www/knowledge
     ports:
       - "3000:3000"
+      - "3035:3035"
     links:
       - mysql
+      - vite
     depends_on:
       - mysql
     mem_limit: 1024m
     mem_reservation: 750m
     cpus: 1
+
+  vite:
+    user: "1000:1000"
+    build:
+      context: .
+      dockerfile: Dockerfile-vite
+    command: bash -c "yarn && yarn dev"
+    environment:
+      DEBUG: '*vite*'
+      RAILS_ENV: development
+      VITE_RUBY_HOST: 0.0.0.0
+    ports:
+      - "3036:3036"
+    volumes:
+      - .:/var/www

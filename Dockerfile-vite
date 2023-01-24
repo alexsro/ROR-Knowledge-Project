@@ -1,0 +1,23 @@
+FROM node:14.18.1
+
+ENV APP=/var/www
+
+RUN apt-get update && apt-get install -y --no-install-recommends sudo
+RUN adduser vite
+RUN adduser vite sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+RUN mkdir $APP
+RUN sudo chown -R vite $APP
+
+USER vite
+
+WORKDIR $APP
+
+COPY . .
+
+RUN yarn
+
+EXPOSE 3036
+
+CMD /bin/bash
