@@ -1,10 +1,13 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import Home from "../pages/home"
+import UsersIndex from "../pages/users"
+import IUserProps from "../pages/users/userProps"
 
 declare global {
   interface Window {
     appHomePage: () => void
+    appUsersIndex: (IUserProps) => void
   }
 }
 
@@ -15,7 +18,16 @@ function appHomePage(){
   )
 }
 
+function appUsersIndex(props){
+  const root = createRoot(document.getElementById('app_users_index'));
+  root.render(
+    <UsersIndex {...props}/>
+  )
+}
+
+
 window.appHomePage = appHomePage
+window.appUsersIndex = appUsersIndex
 
 // const root = createRoot(document.getElementById('app_home_page'))
 // root.render(<Home/>)

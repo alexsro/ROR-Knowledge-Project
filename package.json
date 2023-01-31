@@ -39,6 +39,7 @@
     "react-file-drop": "^0.2.8",
     "react-icons": "^3.10.0",
     "react-on-rails": "^10.0.0",
+    "styled-components": "^5.3.6",
     "yup": "^0.29.1"
   },
   "devDependencies": {
