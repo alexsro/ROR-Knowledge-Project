@@ -4,19 +4,19 @@ class UsersRepository < ApplicationRepository
   end
 
   def find_by_id(user_id)
-    User.find (id: user_id)
+    User.find_by_id(user_id)
   end
 
   def find_by_email(user_email)
-    User.find (email: user_email)
+    User.find_by(email: user_email)
   end
 
   def create(user_params)
-    return User.new(users_params)
+    User.new(users_params)
   end
 
-  def update
-    
+  def update(user)
+    User.save!
   end
 
   def delete(user)
