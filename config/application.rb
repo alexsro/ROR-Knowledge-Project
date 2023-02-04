@@ -26,17 +26,14 @@ module Knowledge
       config.root.join('app', 'modules', 'users', 'services').to_s,
       config.root.join('app', 'modules', 'users', 'repositories').to_s,
       config.root.join('app', 'modules', 'users', 'helpers').to_s,
-      config.root.join('app', 'modules', 'users', 'models').to_s,
       config.root.join('app', 'modules', 'home', 'controllers').to_s,
       config.root.join('app', 'modules', 'home', 'services').to_s,
       config.root.join('app', 'modules', 'home', 'repositories').to_s,
-      config.root.join('app', 'modules', 'home', 'models').to_s,
       ##shared
       config.root.join('app', 'shared', 'controllers').to_s,
       config.root.join('app', 'shared', 'services').to_s,
       config.root.join('app', 'shared', 'repositories').to_s,
       config.root.join('app', 'shared', 'helpers').to_s,
-      config.root.join('app', 'shared', 'models').to_s
     ]
   end
 end

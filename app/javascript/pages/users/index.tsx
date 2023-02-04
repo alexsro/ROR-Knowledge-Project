@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import IUserProps from './userProps';
+import IUser from "../../types/User/IUser"
 import { Container, Header, Body } from './styles';
 
-const UsersIndex: React.FC<IUserProps[]> = ({...data}) => {
-  const [users, setUsers] = useState<IUserProps[]>([])
+const UsersIndex: React.FC<IUser[]> = ({...data}) => {
+  const [users, setUsers] = useState<IUser[]>([])
 
   useEffect(() => {
-    setUsers(Object.values(data) as IUserProps[])
+    setUsers(Object.values(data) as IUser[])
   }, [])
 
   return (
