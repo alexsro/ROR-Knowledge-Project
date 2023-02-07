@@ -67,6 +67,6 @@ models.each { |model|
     #{columns.map { |column| "  #{column[:name]}: #{column[:ts_type]}; " }.join("\n")}
     }
   TYPESCRIPT
-  Dir.mkdir("#{base_path}#{name}")if !File.directory?("#{base_path}#{name}")
+  Dir.mkdir("#{base_path}#{name}") if !File.directory?("#{base_path}#{name}")
   File.open("#{base_path}#{name}/I#{name}.ts", "w").puts(type_template)
 }
