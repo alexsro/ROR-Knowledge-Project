@@ -7,8 +7,6 @@ import globalTheme from '../styles/global'
 import Home from "../pages/home"
 import UsersIndex from "../pages/users"
 
-
-
 declare global {
   interface Window {
     appHomePage: () => void
@@ -16,8 +14,8 @@ declare global {
   }
 }
 
-function appRender(root_name: string, Element, props = {}){
-  const root = createRoot(document.getElementById(root_name));
+function appRender(root_element: string, Element, props = {}){
+  const root = createRoot(document.getElementById(root_element));
   root.render(
     <React.StrictMode>
       <ChakraProvider theme={globalTheme}>
