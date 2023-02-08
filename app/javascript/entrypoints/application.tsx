@@ -1,8 +1,13 @@
-import { ChakraProvider } from "@chakra-ui/react"
 import React from "react"
 import { createRoot } from "react-dom/client"
+import { ChakraProvider } from "@chakra-ui/react"
+
+import globalTheme from '../styles/global'
+
 import Home from "../pages/home"
 import UsersIndex from "../pages/users"
+
+
 
 declare global {
   interface Window {
@@ -11,22 +16,23 @@ declare global {
   }
 }
 
-function appHomePage(){
-  const root = createRoot(document.getElementById('app_home_page'));
-  root.render(
-    <Home/>
-  )
-}
-
-function appUsersIndex(props){
-  const root = createRoot(document.getElementById('app_users_index'));
+function appRender(root_name: string, Element, props = {}){
+  const root = createRoot(document.getElementById(root_name));
   root.render(
     <React.StrictMode>
-      <ChakraProvider>
-        <UsersIndex {...props}/>
+      <ChakraProvider theme={globalTheme}>
+        <Element {...props}/>
       </ChakraProvider>
     </React.StrictMode>
   )
+}
+
+function appHomePage(){
+  appRender('app_home_page', Home);
+}
+
+function appUsersIndex(props){
+  appRender('app_users_index', UsersIndex, props);
 }
 
 
