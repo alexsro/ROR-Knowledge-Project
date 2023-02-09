@@ -3,7 +3,7 @@ import IUser from "../../types/User/IUser"
 import { PageContainer, PageHeader, PageBody } from './styles';
 import { TableContainer, Table, Thead, Tbody, Tr, Td, Th } from '../../styles/table'
 
-const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
+export const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
   const [users, setUsers] = useState<IUser[]>([])
 
   useEffect(() => {
@@ -38,5 +38,3 @@ const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
     </PageContainer>
   );
 };
-
-export default UsersIndex;

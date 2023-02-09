@@ -4,8 +4,8 @@ import { ChakraProvider } from "@chakra-ui/react"
 
 import globalTheme from '../styles/global'
 
-import Home from "../pages/home"
-import UsersIndex from "../pages/users"
+import { Home } from "../pages/home"
+import { UsersIndex } from "../pages/users"
 
 declare global {
   interface Window {
