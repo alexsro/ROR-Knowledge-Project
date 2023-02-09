@@ -1,8 +1,8 @@
+import { ChakraProvider } from "@chakra-ui/react"
 import React from "react"
 import { createRoot } from "react-dom/client"
 import Home from "../pages/home"
 import UsersIndex from "../pages/users"
-import IUserProps from "../pages/users/userProps"
 
 declare global {
   interface Window {
@@ -21,7 +21,11 @@ function appHomePage(){
 function appUsersIndex(props){
   const root = createRoot(document.getElementById('app_users_index'));
   root.render(
-    <UsersIndex {...props}/>
+    <React.StrictMode>
+      <ChakraProvider>
+        <UsersIndex {...props}/>
+      </ChakraProvider>
+    </React.StrictMode>
   )
 }
 
