@@ -13,7 +13,7 @@ export const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
   return (
     <PageContainer>
       <PageHeader>
-        <h1>Lista de usuários</h1>
+        <h1>Lista de Usuários</h1>
       </PageHeader>
       <PageBody>
         <TableContainer>

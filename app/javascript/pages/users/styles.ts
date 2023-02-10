@@ -6,9 +6,7 @@ export const PageHeader = styled.header`
 `;
 
 export const PageBody = styled.main`
-
 `;
 
 export const PageContainer = styled.div`
-
 `;
