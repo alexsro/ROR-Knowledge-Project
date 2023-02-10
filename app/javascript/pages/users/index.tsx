@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import IUser from "../../types/User/IUser"
-import { PageContainer, PageHeader, PageBody, StyledTableContainer, StyledTable, StyledTableHead, StyledTablebody, StyledTableTr, StyledTableTd, StyledTableTh } from './styles';
+import { PageContainer, PageHeader, PageBody } from './styles';
+import { TableContainer, Table, Thead, Tbody, Tr, Td, Th } from '../../styles/table'
 
-const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
+export const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
   const [users, setUsers] = useState<IUser[]>([])
 
   useEffect(() => {
@@ -12,30 +13,28 @@ const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
   return (
     <PageContainer>
       <PageHeader>
-        <h1>Lista de usuários</h1>
+        <h1>Lista de Usuários</h1>
       </PageHeader>
       <PageBody>
-        <StyledTableContainer>
-          <StyledTable>
-            <StyledTableHead >
-              <StyledTableTr>
-                <StyledTableTh> Nome </StyledTableTh>
-                <StyledTableTh> Email </StyledTableTh>
-              </StyledTableTr>
-            </StyledTableHead>
-            <StyledTablebody>
+        <TableContainer>
+          <Table>
+            <Thead >
+              <Tr>
+                <Th> Nome </Th>
+                <Th> Email </Th>
+              </Tr>
+            </Thead>
+            <Tbody>
               {users.map((user) => (
-                <StyledTableTr key={user.id}>
-                  <StyledTableTd>{user.name}</StyledTableTd>
-                  <StyledTableTd>{user.email}</StyledTableTd>
-                </StyledTableTr>
+                <Tr key={user.id}>
+                  <Td>{user.name}</Td>
+                  <Td>{user.email}</Td>
+                </Tr>
               ))}
-            </StyledTablebody>
-          </StyledTable>
-        </StyledTableContainer>
+            </Tbody>
+          </Table>
+        </TableContainer>
       </PageBody>
     </PageContainer>
   );
 };
-
-export default UsersIndex;
