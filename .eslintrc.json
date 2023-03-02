@@ -1,0 +1,70 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "prettier",
+    "react-hooks",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [
+        1,
+        {
+        "extensions": [
+            ".tsx"
+        ]
+        }
+    ],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "prettier/prettier": "error",
+    "react/prop-types": "off",
+    "no-unused-vars": "off",
+    "multiline-ternary": "off",
+    "space-before-function-paren": "off",
+    "no-use-before-define": "off",
+    "array-callback-return": "off",
+    "camelcase": "warn",
+    "no-console": "off",
+    "no-redeclare": "off",
+    "no-import-assign": "off",
+    "react/button-has-type": "error",
+    "react/no-array-index-key": "error",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "no-undef": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "globals": {
+    "JSX": true,
+    "React": true
+  }
+}

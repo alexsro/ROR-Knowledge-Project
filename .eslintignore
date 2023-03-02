@@ -1,0 +1,7 @@
+node_modules
+.vscode
+public
+*.scss
+*.json
+config
+app/assets

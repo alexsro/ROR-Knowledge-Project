@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import IUser from "../../types/User/IUser"
-import { PageContainer, PageHeader, PageBody } from './styles';
-import { TableContainer, Table, Thead, Tbody, Tr, Td, Th } from '../../styles/table'
+import React, { useEffect, useState } from 'react'
+import IUser from '../../types/User/IUser'
+import {
+  Table,
+  Thead,
+  Tbody,
+  TableContainer,
+  Tr,
+  Td,
+  Th
+} from '@chakra-ui/react'
 
 export const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
   const [users, setUsers] = useState<IUser[]>([])
@@ -11,21 +18,21 @@ export const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
   }, [])
 
   return (
-    <PageContainer>
-      <PageHeader>
+    <div>
+      <div style={{ fontSize: '30px', marginLeft: '10px' }}>
         <h1>Lista de Usuários</h1>
-      </PageHeader>
-      <PageBody>
+      </div>
+      <main>
         <TableContainer>
           <Table>
-            <Thead >
+            <Thead>
               <Tr>
                 <Th> Nome </Th>
                 <Th> Email </Th>
               </Tr>
             </Thead>
             <Tbody>
-              {users.map((user) => (
+              {users.map(user => (
                 <Tr key={user.id}>
                   <Td>{user.name}</Td>
                   <Td>{user.email}</Td>
@@ -34,7 +41,7 @@ export const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
             </Tbody>
           </Table>
         </TableContainer>
-      </PageBody>
-    </PageContainer>
-  );
-};
+      </main>
+    </div>
+  )
+}
