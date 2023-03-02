@@ -5,12 +5,12 @@ import { ChakraProvider } from '@chakra-ui/react'
 import globalTheme from '../styles/global'
 
 import { Home } from '../pages/home'
-import { UsersIndex } from '../pages/users'
+import { ListUsers } from '../pages/users'
 
 declare global {
   interface Window {
     appHomePage: () => void
-    appUsersIndex: (IUserProps) => void
+    appListUsers: (IUserProps) => void
   }
 }
 
@@ -29,12 +29,12 @@ function appHomePage() {
   appRender('app_home_page', Home)
 }
 
-function appUsersIndex(props) {
-  appRender('app_users_index', UsersIndex, props)
+function appListUsers(props) {
+  appRender('app_list_users', ListUsers, props)
 }
 
 window.appHomePage = appHomePage
-window.appUsersIndex = appUsersIndex
+window.appListUsers = appListUsers
 
 // const root = createRoot(document.getElementById('app_home_page'))
 // root.render(<Home/>)

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import IUser from '../../types/User/IUser'
+import IUser from '../../../types/User/IUser'
 import {
   Table,
   Thead,
@@ -10,12 +10,12 @@ import {
   Th
 } from '@chakra-ui/react'
 
-export const UsersIndex: React.FC<IUser[]> = ({ ...data }) => {
+export const ListUsers: React.FC<IUser[]> = ({ ...data }) => {
   const [users, setUsers] = useState<IUser[]>([])
 
   useEffect(() => {
     setUsers(Object.values(data) as IUser[])
-  }, [])
+  })
 
   return (
     <div>

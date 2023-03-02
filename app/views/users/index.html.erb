@@ -1,7 +1,7 @@
-<div id="app_users_index">
+<div id="app_list_users">
 <script>
   users = <%= @users.to_json.html_safe %>
-	$('#app_users_index').ready(() => {
-		appUsersIndex(users)
+	$('#app_list_users').ready(() => {
+		appListUsers(users)
 	})
 </script>
