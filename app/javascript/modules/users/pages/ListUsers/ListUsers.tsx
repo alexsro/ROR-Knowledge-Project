@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import IUser from '../../../types/User/IUser'
+import IUser from '../../../../types/User/IUser'
 import {
   Table,
   Thead,
@@ -15,7 +15,7 @@ export const ListUsers: React.FC<IUser[]> = ({ ...data }) => {
 
   useEffect(() => {
     setUsers(Object.values(data) as IUser[])
-  })
+  }, [data])
 
   return (
     <div>
