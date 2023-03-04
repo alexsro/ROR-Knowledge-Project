@@ -6,20 +6,22 @@ import globalTheme from '../styles/global'
 
 import { Home } from '../modules/home'
 import { ListUsers } from '../modules/users/'
+import { ShowUsers } from '../modules/users/pages/ShowUsers/ShowUsers'
 
 declare global {
   interface Window {
     appHomePage: () => void
     appListUsers: (IUserProps) => void
+    appShowUsers: (IUserProps) => void
   }
 }
 
-function appRender(rootElement: string, Element, props = {}) {
+function appRender(rootElement: string, Element, props = []) {
   const root = createRoot(document.getElementById(rootElement))
   root.render(
     <React.StrictMode>
       <ChakraProvider theme={globalTheme}>
-        <Element {...props} />
+        <Element data={props} />
       </ChakraProvider>
     </React.StrictMode>
   )
@@ -31,6 +33,10 @@ function appHomePage() {
 
 function appListUsers(props) {
   appRender('app_list_users', ListUsers, props)
+}
+
+function appShowUsers(props) {
+  appRender('app_show_users', ShowUsers, props)
 }
 
 window.appHomePage = appHomePage

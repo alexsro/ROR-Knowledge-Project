@@ -7,21 +7,20 @@ import {
   TableContainer,
   Tr,
   Td,
-  Th
+  Th,
+  Link,
+  Text,
+  Heading
 } from '@chakra-ui/react'
 
-export const ListUsers: React.FC<IUser[]> = ({ ...data }) => {
-  const [users, setUsers] = useState<IUser[]>([])
-
-  useEffect(() => {
-    setUsers(Object.values(data) as IUser[])
-  }, [data])
+export const ListUsers: React.FC = data => {
+  const [users] = useState<IUser[]>(data['data'] as IUser[])
 
   return (
-    <div>
-      <div style={{ fontSize: '30px', marginLeft: '10px' }}>
-        <h1>Lista de Usuários</h1>
-      </div>
+    <>
+      <Heading as="h1" py="30px" fontSize="30px" pl="20px">
+        Lista de Usuários
+      </Heading>
       <main>
         <TableContainer>
           <Table>
@@ -36,12 +35,17 @@ export const ListUsers: React.FC<IUser[]> = ({ ...data }) => {
                 <Tr key={user.id}>
                   <Td>{user.name}</Td>
                   <Td>{user.email}</Td>
+                  <Td>
+                    <Link href={`localhost:3000/users/${user.id}`}>
+                      <Text>{'Visualizar Usuário'}</Text>
+                    </Link>
+                  </Td>
                 </Tr>
               ))}
             </Tbody>
           </Table>
         </TableContainer>
       </main>
-    </div>
+    </>
   )
 }
