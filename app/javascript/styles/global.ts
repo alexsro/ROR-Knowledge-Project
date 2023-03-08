@@ -1,19 +1,24 @@
 //https://chakra-ui.com/docs/styled-system/global-styles
 //https://chakra-ui.com/docs/styled-system/global-styles
-import { extendTheme } from "@chakra-ui/react";
+// eslint-disable-next-line prettier/prettier
+import { extendTheme } from '@chakra-ui/react'
 
 export const globalTheme = extendTheme({
+  fonts: {
+    body: 'Roboto, BlinkMacSystemFont, -apple-system, "Segoe UI", Ubuntu, Oxygen, Cantarell, Arial, sans-serif'
+  },
   styles: {
     global: {
-      'body, td': {
+      body: {
         background: '#312E38',
-        color: '#fff',
+        color: '#fff'
       },
-      a: {
-        color: 'teal.500',
-      },
-    },
-  },
+      '*': {
+        background: 'transparent',
+        color: '#fff !important'
+      }
+    }
+  }
 })
 
-export default globalTheme;
+export default globalTheme

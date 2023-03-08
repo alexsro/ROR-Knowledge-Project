@@ -1,4 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<div id="app_show_users">
+<script>
+  user = <%= @user.to_json.html_safe %>
+	$('#app_show_users').ready(() => {
+		appShowUsers(user)
+	})
+</script>
+<%
+=begin%>
+ <p style="color: green"><%= notice %></p>
 
 <%= render @user %>
 
@@ -8,3 +17,5 @@
 
   <%= button_to "Destroy this user", @user, method: :delete %>
 </div>
+<%
+=end%>

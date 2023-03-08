@@ -1,7 +1,21 @@
-<div id="app_users_index">
+<div id="app_list_users">
 <script>
   users = <%= @users.to_json.html_safe %>
-	$('#users_index').ready(() => {
-		appUsersIndex(users)
+	$('#app_list_users').ready(() => {
+		appListUsers(users)
 	})
 </script>
+<%
+=begin%>
+ <div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_user_path %>
+<%
+=end%>

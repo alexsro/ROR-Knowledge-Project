@@ -1,41 +1,47 @@
-import React from "react"
-import { createRoot } from "react-dom/client"
-import { ChakraProvider } from "@chakra-ui/react"
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { ChakraProvider } from '@chakra-ui/react'
 
 import globalTheme from '../styles/global'
 
-import { Home } from "../pages/home"
-import { UsersIndex } from "../pages/users"
+import { Home } from '../modules/home'
+import { ListUsers } from '../modules/users/'
+import { ShowUsers } from '../modules/users/pages/ShowUsers/ShowUsers'
 
 declare global {
   interface Window {
     appHomePage: () => void
-    appUsersIndex: (IUserProps) => void
+    appListUsers: (IUserProps) => void
+    appShowUsers: (IUserProps) => void
   }
 }
 
-function appRender(root_element: string, Element, props = {}){
-  const root = createRoot(document.getElementById(root_element));
+function appRender(rootElement: string, Element, props = []) {
+  const root = createRoot(document.getElementById(rootElement))
   root.render(
     <React.StrictMode>
       <ChakraProvider theme={globalTheme}>
-        <Element {...props}/>
+        <Element data={props} />
       </ChakraProvider>
     </React.StrictMode>
   )
 }
 
-function appHomePage(){
-  appRender('app_home_page', Home);
+function appHomePage() {
+  appRender('app_home_page', Home)
 }
 
-function appUsersIndex(props){
-  appRender('app_users_index', UsersIndex, props);
+function appListUsers(props) {
+  appRender('app_list_users', ListUsers, props)
 }
 
+function appShowUsers(props) {
+  appRender('app_show_users', ShowUsers, props)
+}
 
 window.appHomePage = appHomePage
-window.appUsersIndex = appUsersIndex
+window.appListUsers = appListUsers
+window.appShowUsers = appShowUsers
 
 // const root = createRoot(document.getElementById('app_home_page'))
 // root.render(<Home/>)
