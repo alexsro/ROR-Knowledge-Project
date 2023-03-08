@@ -41,6 +41,7 @@ function appShowUsers(props) {
 
 window.appHomePage = appHomePage
 window.appListUsers = appListUsers
+window.appShowUsers = appShowUsers
 
 // const root = createRoot(document.getElementById('app_home_page'))
 // root.render(<Home/>)

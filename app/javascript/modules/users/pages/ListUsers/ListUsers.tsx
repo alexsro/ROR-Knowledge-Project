@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import IUser from '../../../../types/User/IUser'
 import {
   Table,
@@ -9,23 +9,33 @@ import {
   Td,
   Th,
   Link,
-  Text,
-  Heading
+  TableCaption,
+  Button
 } from '@chakra-ui/react'
+import { BiAddToQueue, BiShow } from 'react-icons/bi'
 
 export const ListUsers: React.FC = data => {
   const [users] = useState<IUser[]>(data['data'] as IUser[])
 
+  const handleCreateUser = () => {
+    alert('t')
+  }
+
   return (
     <>
-      <Heading as="h1" py="30px" fontSize="30px" pl="20px">
-        Lista de Usuários
-      </Heading>
+      <Button onClick={handleCreateUser} colorScheme="orange">
+        <BiAddToQueue></BiAddToQueue>
+        Adicionar usuários
+      </Button>
       <main>
         <TableContainer>
-          <Table>
+          <Table variant="striped" colorScheme="blackAlpha">
+            <TableCaption fontSize="24px" placement="top">
+              Lista de usuários
+            </TableCaption>
             <Thead>
               <Tr>
+                <Th></Th>
                 <Th> Nome </Th>
                 <Th> Email </Th>
               </Tr>
@@ -33,13 +43,13 @@ export const ListUsers: React.FC = data => {
             <Tbody>
               {users.map(user => (
                 <Tr key={user.id}>
-                  <Td>{user.name}</Td>
-                  <Td>{user.email}</Td>
                   <Td>
-                    <Link href={`localhost:3000/users/${user.id}`}>
-                      <Text>{'Visualizar Usuário'}</Text>
+                    <Link href={`users/${user.id}`}>
+                      <BiShow title="Visualizar Usuário"></BiShow>
                     </Link>
                   </Td>
+                  <Td>{user.name}</Td>
+                  <Td>{user.email}</Td>
                 </Tr>
               ))}
             </Tbody>
